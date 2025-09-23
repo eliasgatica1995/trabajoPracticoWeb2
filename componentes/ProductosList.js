@@ -53,14 +53,23 @@ class ProductosList extends LitElement {
   }
 
   applyFilter() {
+      console.log("Antes de filtrar:"+this.products)
+      console.log("Antes de filtrar:"+this.allProducts)
+     
     if (!this.category) {
       this.products = this.allProducts;
     } else {
-      this.products = this.allProducts.filter(
-        p =>
-          p.category &&
-          p.category.title.toLowerCase() === this.category.toLowerCase()
+     this.products = this.allProducts.filter(
+        
+        p => {p.category_id === this.category
+          console.log("productos: "+p.category_id)
+        }
+        
       );
+      console.log(this.category)
+      console.log("Despues de filtro productos:"+this.products)
+      console.log("Despues de filtro todos los productos:"+this.allProducts)
+     
     }
   }
 

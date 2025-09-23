@@ -1,5 +1,8 @@
-function listarCategoria(category){
-
+function listarProductos(category){
+      if (!category) {
+        const params = new URLSearchParams(window.location.search);
+        category = params.get("categoria") || '';
+    }
     let products = document.getElementById("productosCat");
     products.innerHTML=`
                  <productos-list 
@@ -11,3 +14,8 @@ function listarCategoria(category){
                 </productos-list>
             `;
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const categoriaId = params.get("categoria") || '';
+  listarProductos(categoriaId);
+});
