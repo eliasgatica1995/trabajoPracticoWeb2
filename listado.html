@@ -9,7 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
     <script src="./componentes/listarProductos.js"></script>
     <script src="./componentes/listarCategorias.js"></script>
-
+    <!--<script src="./componentes/pruebaParamURL.js"></script>
+-->
 </head>
 
 <body class="bg-white min-h-screen py-8">
@@ -46,6 +47,18 @@
                     </li>
                     <li>
                         <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2" onclick="listarCategoria('Carnes')">Carnes</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2" onclick="listarCategoria('Higiene')">Higiene</a>
+                    </li>
+                     <li>
+                        <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2" onclick="listarCategoria('Limpieza')">Limpieza</a>
+                    </li>
+                    <li>
+                        <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2" onclick="listarCategoria('Verduras')">Verduras</a>
+                    </li>
+                    <li>
+                        <a href="listado.html?categoria=96" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2" onclick="">Carnes</a>
                     </li>
                     <li>
                         <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2" onclick="listarCategoria('Higiene')">Higiene</a>
@@ -111,19 +124,18 @@
             </div>
         </el-menu>
         </el-dropdown>
-        <div id="productosCat">
-        </div>
-        <div id="categorias">
-
-        </div>
-        
+        <div id="productosCat"> </div>
+        <categories-list
+                    api-url="http://161.35.104.211:8000/categories/"
+                    api-token="elias"
+                >
+        </categories-list>
     </div>
 
     <!-- Importamos el web component -->
     <script src="/componentes/ProductosList.js" type="module"></script>
     <script type="text/javascript"> listarProductos(''); </script>
-    <script type="text/javascript"> listarCategorias(); </script>
-
+    <script>listarCat(); </script>
 
 </body>
 

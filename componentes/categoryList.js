@@ -16,8 +16,13 @@ class CategoryList extends LitElement {
   }
 
   connectedCallback() {
+    
     super.connectedCallback();
     if (this.apiUrl && this.apiToken) {
+
+      console.log("llega al catListj")
+      console.log(this.apiUrl)
+
       fetch(this.apiUrl, {
         headers: {
           'accept': 'application/json',
@@ -56,9 +61,9 @@ class CategoryList extends LitElement {
       ${this.categories.map(category => {
         return html`
              
-                        <li>
+                        <div>
                             <a href="listado.html?categoria=${category.idCategoria}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">${category.title}</a>
-                        </li>
+                        </div>
         `;
       })}
     `;
