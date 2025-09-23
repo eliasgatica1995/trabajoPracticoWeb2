@@ -1,4 +1,4 @@
-function listarCategoria(category){
+function listarProductos(category){
 
     let products = document.getElementById("productosCat");
     products.innerHTML=`

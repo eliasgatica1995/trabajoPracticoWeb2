@@ -26,7 +26,7 @@ class CategoryList extends LitElement {
       })
         .then(res => res.json())
         .then(response => {
-            const products = response;
+            const categories = response;
 
           if (!this.categories) {
             this.categories = [];
@@ -47,28 +47,18 @@ class CategoryList extends LitElement {
   }
 
   render() {
-    if (this.error) {
-      return this.renderError(this.error);
-    }
+            if (this.error) {
+              return this.renderError(this.error);
+            }
+    
 
     return html`
-      ${this.categories.map(product => {
-        const price = Math.floor(product.price * 1000);
+      ${this.categories.map(category => {
         return html`
              
                         <li>
-                            <a href="#" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2" onclick="listarCategoria('Verduras')">Verduras</a>
+                            <a href="listado.html?categoria=${category.idCategoria}" class="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">${category.title}</a>
                         </li>
-                       
-                    
-
-
-          <producto-item
-            title="${product.title}"
-            picture="http://161.35.104.211:8000${product.pictures[0]}"
-            description="${product.description}"
-            price="${price}">
-          </producto-item>
         `;
       })}
     `;
@@ -83,4 +73,4 @@ class CategoryList extends LitElement {
   }
 }
 
-customElements.define('productos-list', ProductosList);
+customElements.define('categories-list', CategoryList);
