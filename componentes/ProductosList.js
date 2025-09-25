@@ -5,7 +5,6 @@ class ProductosList extends LitElement {
   static properties = {
     apiUrl: { type: String, attribute: 'api-url' },
     apiToken: { type: String, attribute: 'api-token' },
-    allProducts: { type: Array, state: true },
     products: { type: Array, state: true },
     error: { type: Object, state: true },
     category: { type: String, attribute: 'category' }
@@ -13,13 +12,16 @@ class ProductosList extends LitElement {
 
   constructor() {
     super();
-    this.allProducts = [];
     this.products = [];
     this.error = null;
   }
 
   connectedCallback() {
     super.connectedCallback();
+    this.loadProducts();
+  }
+
+  loadProducts() {
     if (this.apiUrl && this.apiToken) {
       fetch(this.apiUrl, {
         headers: {
@@ -29,16 +31,13 @@ class ProductosList extends LitElement {
       })
         .then(res => res.json())
         .then(response => {
-            const products = response;
+          let products = response || [];
 
-          if (!products) {
-            this.allProducts = [];
-            this.products = [];
-            return;
+          if (this.category) {
+            products = products.filter(p => p.category_id == Number(this.category));
           }
 
-          this.allProducts = products;
-          this.applyFilter();
+          this.products = products;
         })
         .catch(err => {
           this.error = err;
@@ -46,35 +45,8 @@ class ProductosList extends LitElement {
     }
   }
 
-  updated(changedProps) {
-    if (changedProps.has('category')) {
-      this.applyFilter();
-    }
-  }
-
-  applyFilter() {
-      console.log("Antes de filtrar:"+this.products)
-      console.log("Antes de filtrar:"+this.allProducts)
-     
-    if (!this.category) {
-      this.products = this.allProducts;
-    } else {
-     this.products = this.allProducts.filter(
-        
-        p => {p.category_id === this.category
-          console.log("productos: "+p.category_id)
-        }
-        
-      );
-      console.log(this.category)
-      console.log("Despues de filtro productos:"+this.products)
-      console.log("Despues de filtro todos los productos:"+this.allProducts)
-     
-    }
-  }
-
   createRenderRoot() {
-    return this; // usa el DOM global
+    return this; 
   }
 
   render() {
