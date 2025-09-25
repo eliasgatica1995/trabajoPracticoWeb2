@@ -59,6 +59,7 @@ class ProductosList extends LitElement {
         const price = Math.floor(product.price * 1000);
         return html`
           <producto-item
+            id=${product.id}
             title="${product.title}"
             picture="http://161.35.104.211:8000${product.pictures[0]}"
             description="${product.description}"
