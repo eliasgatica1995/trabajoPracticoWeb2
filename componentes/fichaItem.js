@@ -18,6 +18,8 @@ export class ProductoFicha extends LitElement {
       descripcion: { type: String, state: true },
       precio: { type: Number, state: true },
       categoria: { type: Object, state: true },
+      tags: { type: Array, state: true },
+      
       
       error: { type: String },
   }
@@ -51,6 +53,7 @@ export class ProductoFicha extends LitElement {
             this.imagen = item.pictures[0];
             this.descripcion = item.description;
             this.precio = item.price;
+            this.tags = item.tags;
             
             this.categoria = item.category;
 
@@ -80,7 +83,25 @@ export class ProductoFicha extends LitElement {
         return this.renderError(this.error);
     }
 
+
+
+
+
+
     return html`
+      <!-- Contenido Head ficha -->
+
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden max-w-xl mx-auto">
+        <div class="relative">
+          <img src="${this.apiUrl + this.categoria.picture}" alt="${this.categoria.title}" class="w-full h-32 object-cover opacity-80">
+          <div class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+            <h3 class="text-white text-lg font-semibold">${this.categoria.description}</h3>
+          </div>
+        </div>
+      
+
+      <!-- Contenido producto ficha -->
+
       <div class="bg-white rounded-lg shadow p-6 md:flex gap-6 max-w-4xl mx-auto">
         <img
           class="w-full md:w-1/2 h-64 object-cover rounded"
@@ -90,7 +111,7 @@ export class ProductoFicha extends LitElement {
         <div class="md:flex-1 mt-6 md:mt-0">
           <h1 class="text-2xl font-bold">${this.titulo}</h1>
 
-
+          <!-- estrellas y reseñas estaticas -->
           <div class="mt-2 text-gray-600 flex items-center gap-2">
             <span class="text-green-600 font-semibold">★★★★☆</span>
             <span>4.9 · 120 reseñas</span>
@@ -106,18 +127,38 @@ export class ProductoFicha extends LitElement {
             <span class="text-sm font-medium">${this.categoria.title}</span>
           </div>
 
+        
+          <!-- Contenido Tags Ficha -->
+
+        ${this.tags?.length ? html`
+          <div class="mt-4 flex gap-2 flex-wrap">
+            ${this.tags.map(tag => {
+              const styles = {
+                'Promoción': 'bg-red-100 text-red-800',
+                'Orgánico': 'bg-blue-100 text-blue-800',
+                'Producto local': 'bg-yellow-100 text-yellow-800'
+              };
+              const style = styles[tag.title] || 'bg-gray-100 text-gray-800';
+              return html`
+                <span class="px-2 py-1 ${style} text-xs rounded">${tag.title}</span>
+              `;
+            })}
+          </div>
+        ` : ''}
+        
+
+        <!-- Boton carrito y contador con +-  -->
         <div class="mt-6 flex items-center gap-3">
           <div class="flex items-center border rounded">
             <button class="px-3 text-xl text-gray-600 hover:text-black">−</button>
-            <div class="px-4 font-medium"> Coontador </div>
+              <div class="px-4 font-medium"> 1 </div>
             <button class="px-3 text-xl text-gray-600 hover:text-black">+</button>
           </div>
           <button class="ml-auto bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-medium">
             Añadir al carrito
           </button>
         </div>
-
-        </div>
+      
       </div>
     `;
     
@@ -127,3 +168,4 @@ export class ProductoFicha extends LitElement {
 
 
 customElements.define('producto-ficha', ProductoFicha);
+
