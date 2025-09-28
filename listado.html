@@ -156,29 +156,13 @@
     </div>
 
     <carrito-compra id="carrito"> </carrito-compra>
-
     <script>
-      window.agregarAlCarrito = function (id) {
-        // busca el producto
-        const productoElem = document.querySelector(
-          `producto-item[id='${id}']`
-        );
-        if (!productoElem) return;
-
-        // crea objeto para ingresar
-        const producto = {
-          id: productoElem.id,
-          titulo: productoElem.title,
-          precio: productoElem.price,
-          description: productoElem.description,
-          picture: productoElem.picture,
-        };
-
+      document.addEventListener("agregar-carrito", function (e) {
         const carrito = document.querySelector("carrito-compra");
         if (carrito) {
-          carrito.agregarAlCarrito(producto);
+          carrito.agregarAlCarrito(e.detail);
         }
-      };
+      });
     </script>
     <!-- Importamos el web component -->
     <script src="/componentes/ProductosList.js" type="module"></script>

@@ -47,23 +47,31 @@ class ProductoItem extends LitElement {
         <div class="flex-1 p-3 bg-white flex flex-col justify-between">
           <h2 class="text-xl font-bold mb-1">${product.title}</h2>
           <p class="text-gray-600 mb-2">${product.description}</p>
-          <div class="text-2xl font-semibold text-blue-600">
+          <div class="text-2xl font-semibold text-blue-600 text-center">
             $${product.price}
           </div>
           <div class="flex gap-2 mt-4">
             <a
               type="button"
               href="ficha.html?producto=${product.id}"
-              class="ml-auto bg-green-700 hover:bg-green-800 text-white px-6 py-2 rounded font-medium"
+              class="text-white bg-green-700 hover:bg-green-800 focus:outline-none focus:ring-4 focus:ring-green-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
             >
-              Ver Más
+              Ver más
             </a>
             <button
               type="button"
-              onclick="agregarAlCarrito(${product.id})"
-              class="ml-auto bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-medium"
+              @click=${() => {
+                this.dispatchEvent(
+                  new CustomEvent("agregar-carrito", {
+                    detail: product,
+                    bubbles: true,
+                    composed: true,
+                  })
+                );
+              }}
+              class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Sumar al carro
+              Añadir al carrito
             </button>
           </div>
         </div>

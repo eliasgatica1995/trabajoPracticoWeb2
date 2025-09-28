@@ -49,7 +49,7 @@ export class CarritoCompra extends LitElement {
   // se ejecuta cada vez que se agrega o elimina un item del carrito.
   calcularTotal() {
     this.total = this.items.reduce(
-      (cont, item) => cont + item.precio * item.cantidad,
+      (cont, item) => cont + item.price * item.cantidad,
       0 // cantidad inciial del contador.
     );
   }
@@ -130,8 +130,8 @@ export class CarritoCompra extends LitElement {
             ${this.items.map(
               (item) => html`
                 <li>
-                  <span>${item.titulo}</span>
-                  <span>${item.precio}</span>
+                  <span>${item.title}</span>
+                  <span>${item.price}</span>
                   <span>${item.cantidad}</span>
                   <button @click=${() => this.eliminarDelCarrito(item.id)}>
                     Eliminar
