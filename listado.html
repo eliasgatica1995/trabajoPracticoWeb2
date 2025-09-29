@@ -19,9 +19,8 @@
 
 <!-- component -->
 <!-- This is an example component -->
-<div class="max-w-2xl mx-auto">
-    
-    <nav class="border-gray-200">
+<div class="max-w-2xl mx-auto"> 
+    <nav class="border-gray-200 fixed top-0 left-0 right-0 z-50 bg-white ">
     <div class="container mx-auto flex flex-wrap items-center justify-between">
         <a href="#" class="flex">
         <img src="./images/marketLogo.svg" class="h-10 mr-3" alt="Logo">
@@ -35,7 +34,7 @@
         <div class="hidden md:block w-full md:w-auto" id="mobile-menu">
         <ul class="flex-col md:flex-row flex items-center md:space-x-8 mt-4 md:mt-0 md:text-sm md:font-medium">
             <li>
-             <a href="#" class="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0">Home</a>
+             <a href="index.html" class="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0">Home</a>
          </li>
               <li>
             <a href="listado.html" class="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0">Productos</a>
@@ -47,13 +46,6 @@
                     <!--Lista donde se insertan las categorias obtenidas de la api, se encuentra en el dropdown menu en la nav bar-->
                     <ul id="categorias" class="py-1" aria-labelledby="dropdownLargeButton"></ul>
                 </div>
-            </li>
-          
-            <li>
-            <a href="#" class="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0">Pricing</a>
-            </li>
-            <li>
-            <a href="#" class="text-gray-700 hover:bg-gray-50 border-b border-gray-100 md:hover:bg-transparent md:border-0 block pl-3 pr-4 py-2 md:hover:text-blue-700 md:p-0">Contact</a>
             </li>
             <li>
             <img src="/images/cartLogo.svg" class="h-10 mr-3" alt="Logo">
@@ -84,6 +76,7 @@
 
     <!-- Importamos el web component -->
     <script src="/componentes/ProductosList.js" type="module"></script>
+     <script src="/componentes/navBar.js" type="module"></script>
      <script>listarCat(); </script>
 
 </body>
