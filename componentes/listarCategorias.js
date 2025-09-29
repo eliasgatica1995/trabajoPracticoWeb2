@@ -4,7 +4,7 @@ function listarCat(){
     fetch("http://161.35.104.211:8000/categories/", {
           headers: {
             'accept': 'application/json',
-            'Authorization': 'Bearer ' + 'elias'
+            'Authorization': 'Bearer ' + 'seba'
           }
         })
         .then(res => res.json())
