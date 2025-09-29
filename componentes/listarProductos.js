@@ -8,6 +8,7 @@ function listarProductos(category) {
                  <productos-list 
                     class="grid grid-cols-2 md:gr id-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8 gap-6"
                     api-url="http://161.35.104.211:8000"
+
                     api-token="seba"
                     category="${category}"
                     >
