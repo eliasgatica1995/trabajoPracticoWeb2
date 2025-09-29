@@ -45,6 +45,12 @@ export class CarritoCompra extends LitElement {
   // abre o cierra carrito
   toggleCarrito() {
     this.visible = !this.visible;
+    const main = document.getElementById("main");
+    if (this.visible) {
+      main.classList.add("blur-xs");
+    } else {
+      main.classList.remove("blur-xs");
+    }
   }
 
   // se ejecuta cada vez que se agrega o elimina un item del carrito.
@@ -71,8 +77,6 @@ export class CarritoCompra extends LitElement {
 
       this.items.push(nuevoItem);
     }
-
-    console.log("item agregado." + this.items);
 
     this.calcularTotal();
     localStorage.setItem("carrito", JSON.stringify(this.items));
@@ -124,12 +128,18 @@ export class CarritoCompra extends LitElement {
     return item ? item.price * item.cantidad : 0;
   }
 
+  //calcula la cantidad de un item en particular.
+  getProductoCantidad(id) {
+    const item = this.items.find((item) => item.id === id);
+    return item ? item.cantidad : 0;
+  }
+
   render() {
     return html`
       <button
         @click=${this.toggleCarrito}
         class=${classMap({
-          "fixed bottom-4 right-4 bg-orange-600 z-40 hover:bg-orange-700 text-white px-6 py-2 rounded font-medium": true,
+          "fixed bottom-4 right-4 bg-amber-500 z-40 hover:bg-amber-600 text-black px-6 py-2 rounded font-medium": true,
           hidden: this.visible,
           block: !this.visible,
         })}
@@ -162,19 +172,27 @@ export class CarritoCompra extends LitElement {
                 (item) => html`
                   <div class="flex items-center justify-between">
                     <div>
-                      <p class="font-medium">${item.title}</p>
+                      <img
+                        src="${item.picture}"
+                        alt="${item.title}"
+                        class="w-16 h-16 object-cover"
+                      />
+
+                      <a class="font-medium">${item.title}</a>
+                      <p class="text-sm text-gray-500">$${item.price}</p>
+
                       <div class="flex items-center space-x-1">
                         <p class="text-sm text-gray-500">x${item.cantidad}</p>
                         <button
                           @click=${() => this.restarCarrito(item.id)}
-                          class=" bg-red-600 text-white py-1 px-2 rounded hover:bg-red-700 text-white text-sm"
+                          class="rounded-full bg-amber-500  py-1 px-2 rounded hover:bg-amber-600 text-black text-xs"
                         >
                           -
                         </button>
 
                         <button
                           @click=${() => this.agregarAlCarrito(item)}
-                          class=" bg-blue-600 text-white py-1 px-2 rounded hover:bg-blue-700 text-white text-sm"
+                          class=" rounded-full bg-green-600  py-1 px-2 rounded hover:bg-green-700 text-black text-xs"
                         >
                           +
                         </button>
@@ -187,9 +205,9 @@ export class CarritoCompra extends LitElement {
 
                   <button
                     @click=${() => this.eliminarCarrito(item.id)}
-                    class="btn text-red-500 hover:text-red-700 text-sm"
+                    class=" rounded-full bg-red-600 text-white py-1 px-2 rounded hover:bg-red-700  text-xs"
                   >
-                    Eliminar
+                    Eliminar Item
                   </button>
                 `
               )}
@@ -201,7 +219,7 @@ export class CarritoCompra extends LitElement {
           </p>
           <button
             @click=${this.vaciarCarrito}
-            class="w-1/2 bg-yellow-600 text-white py-2 rounded hover:bg-yellow-700"
+            class="w-1/2 bg-amber-500 text-black py-2 rounded hover:bg-amber-600"
           >
             Vaciar carrito
           </button>

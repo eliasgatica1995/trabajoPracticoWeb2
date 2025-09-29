@@ -26,7 +26,6 @@ export class ProductoFicha extends LitElement {
     tags: { type: Array, state: true },
 
     //carrito
-    estado_carrito: { type: Number, state: true },
     error: { type: String },
   };
 
@@ -75,15 +74,38 @@ export class ProductoFicha extends LitElement {
     }
   }
 
+  getProductoId() {
+    return this.id;
+  }
+  getProductoData() {
+    return {
+      id: this.id,
+      title: this.titulo,
+      price: Math.floor(this.precio * 1000),
+      description: this.descripcion,
+      picture: this.imagen,
+      categoria: this.categoria,
+      tags: this.tags,
+    };
+  }
+
   renderError(error) {
     console.log("error:" + error);
     return html` <div class="text-red-500">${error}</div> `;
+  }
+
+  getCarrito() {
+    return this.carrito;
   }
 
   render() {
     if (this.error) {
       return this.renderError(this.error);
     }
+    const carrito = document.getElementById("carrito");
+    const body = document.querySelector("body");
+
+    this.price = Math.floor(this.precio * 1000);
 
     return html`
       <!-- Contenido Head ficha -->
@@ -112,7 +134,7 @@ export class ProductoFicha extends LitElement {
           class="bg-white rounded-lg shadow p-6 md:flex gap-6 max-w-4xl mx-auto"
         >
           <img
-            class="w-full md:w-1/2 h-64 object-cover rounded"
+            class="w-full md:w-1/2 h-64 my-2 object-cover rounded"
             src="${this.apiUrl + this.imagen}"
             alt="${this.titulo}"
           />
@@ -121,11 +143,13 @@ export class ProductoFicha extends LitElement {
 
             <!-- estrellas y reseñas estaticas -->
             <div class="mt-2 text-gray-600 flex items-center gap-2">
-              <span class="text-green-600 font-semibold">★★★★☆</span>
-              <span>4.9 · 120 reseñas</span>
+              <span href="" class="text-green-600 font-semibold"
+                >★★★★☆ 4.9
+              </span>
+              <a href="#">· 120 reseñas</a>
             </div>
 
-            <div class="mt-4 text-3xl font-extrabold">$${this.precio}/kg</div>
+            <div class="mt-4 text-3xl font-extrabold">$${this.price}</div>
             <p class="mt-4 text-gray-700">${this.descripcion}</p>
 
             <div class="mt-6 flex items-center gap-3">
@@ -159,16 +183,26 @@ export class ProductoFicha extends LitElement {
             <!-- Boton carrito y contador con +-  -->
             <div class="mt-6 flex items-center gap-3">
               <div class="flex items-center border rounded">
-                <button class="px-3 text-xl text-gray-600 hover:text-black">
+                <button
+                  @click=${() => carrito.restarCarrito(this.getProductoId())}
+                  class="px-3 text-xl text-gray-600 hover:text-black"
+                >
                   −
                 </button>
-                <div class="px-4 font-medium">1</div>
-                <button class="px-3 text-xl text-gray-600 hover:text-black">
+                <div class="px-4 font-medium">
+                  ${carrito.getProductoCantidad(this.getProductoId())}
+                </div>
+                <button
+                  @click=${() =>
+                    carrito.agregarAlCarrito(this.getProductoData())}
+                  class="px-3 text-xl text-gray-600 hover:text-black"
+                >
                   +
                 </button>
               </div>
               <button
                 class="ml-auto bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-medium"
+                @click=${() => carrito.agregarAlCarrito(this.getProductoData())}
               >
                 Añadir al carrito
               </button>
