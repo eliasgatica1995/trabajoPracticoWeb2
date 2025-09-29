@@ -16,8 +16,9 @@ function listarCat(){
                 ${category.title}
               </a>
             </li>
-          `).join('');
-        })
-        .catch(err => console.error("Error cargando categorías:", err));
+          `
+        )
+        .join("");
+    })
+    .catch((err) => console.error("Error cargando categorías:", err));
 }
-        
