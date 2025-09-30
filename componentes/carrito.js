@@ -185,14 +185,14 @@ export class CarritoCompra extends LitElement {
                         <p class="text-sm text-gray-500">x${item.cantidad}</p>
                         <button
                           @click=${() => this.restarCarrito(item.id)}
-                          class="rounded-full bg-amber-500  py-1 px-2 rounded hover:bg-amber-600 text-black text-xs"
+                          class="bg-amber-500  py-1 px-2 rounded hover:bg-amber-600 text-black text-xs"
                         >
                           -
                         </button>
 
                         <button
                           @click=${() => this.agregarAlCarrito(item)}
-                          class=" rounded-full bg-green-600  py-1 px-2 rounded hover:bg-green-700 text-black text-xs"
+                          class="  bg-green-600  py-1 px-2 rounded hover:bg-green-700 text-black text-xs"
                         >
                           +
                         </button>
@@ -205,7 +205,7 @@ export class CarritoCompra extends LitElement {
 
                   <button
                     @click=${() => this.eliminarCarrito(item.id)}
-                    class=" rounded-full bg-red-600 text-white py-1 px-2 rounded hover:bg-red-700  text-xs"
+                    class="bg-red-600 text-white py-1 px-2 rounded hover:bg-red-700  text-xs"
                   >
                     Eliminar Item
                   </button>
