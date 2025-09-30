@@ -2,7 +2,6 @@ import { LitElement, html, css } from "lit";
 import { state } from "lit/decorators.js";
 import "./carrito";
 
-
 export class ProductoFicha extends LitElement {
   // se muestra como bloque.
   static styles = css`
@@ -28,11 +27,11 @@ export class ProductoFicha extends LitElement {
     categoria: { type: Object, state: true },
     tags: { type: Array, state: true },
     //picture de categoria
-    picture: {type: String},
+    picture: { type: String },
     //title de categoria
-    categoryTitle: {type : String},
+    categoryTitle: { type: String },
     //descripcion de categoria
-    categoryDesc : {type: String},
+    categoryDesc: { type: String },
     //carrito
     error: { type: String },
   };
@@ -44,9 +43,9 @@ export class ProductoFicha extends LitElement {
     this.descripcion = "Descripción del producto";
     this.precio = 0;
     //atributos de categoria
-    this.picture= "";
-    this.categoryTitle="";
-    this.categoryDesc="";
+    this.picture = "";
+    this.categoryTitle = "";
+    this.categoryDesc = "";
   }
 
   createRenderRoot() {
@@ -75,9 +74,9 @@ export class ProductoFicha extends LitElement {
           this.tags = item.tags;
           this.categoria = item.category;
           this.picture = item.category.picture;
-          this.categoryTitle= item.category.title;
-          this.categoryDesc= item.category.description;
-          console.log(this.categoryTitle);
+          this.categoryTitle = item.category.title;
+          this.categoryDesc = item.category.description;
+
           // actualización del componente
           this.requestUpdate();
         })
@@ -130,12 +129,13 @@ export class ProductoFicha extends LitElement {
       >
         <div class="relative">
           <img
-            src="${this.apiUrl + this.picture}"
+            src="${this.apiUrl}${this.picture}"
             alt="${this.categoryTitle}"
             class="w-full h-32 object-cover opacity-80"
           />
-          <div  
-            class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
+
+          <div
+            class="absolute inset-0 bg-opacity-30 flex items-center justify-center"
           >
             <h3 class="text-white text-lg font-semibold">
               ${this.categoryDesc}
