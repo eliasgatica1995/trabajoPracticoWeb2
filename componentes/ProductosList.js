@@ -63,9 +63,10 @@ class ProductosList extends LitElement {
           <producto-item
             id=${product.id}
             title="${product.title}"
-            picture="${this.apiUrl}${product.pictures[0]}"
+            picture="${product.pictures[0]}"
             description="${product.description}"
             price="${price}"
+            apiUrl="${this.apiUrl}"
           >
           </producto-item>
         `;
