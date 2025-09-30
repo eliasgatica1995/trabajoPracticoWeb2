@@ -17,7 +17,7 @@
 
   <body class="bg-white min-h-screen py-8">
   
-    <div id="main">
+   
       <!-- component -->
       <!-- This is an example component -->
       <div class="max-w-2xl mx-auto">
@@ -31,6 +31,8 @@
                 >SuperMarket</span
               >
             </a>
+             <carrito-compra  class="block md:hidden" id="carrito"> </carrito-compra>
+
             <button
               data-collapse-toggle="mobile-menu"
               type="button"
@@ -122,15 +124,15 @@
                     alt="Logo"
                   />
                   -->
-                    <carrito-compra id="carrito"> </carrito-compra>
-  
+                    <carrito-compra class="hidden md:inline" id="carrito"> </carrito-compra>
+
                 </li>
               </ul>
             </div>
           </div>
         </nav>
       </div>
-
+    <div id="main">
       <div class="max-w-11/12 mx-auto">
         <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">
           Productos del Supermercado

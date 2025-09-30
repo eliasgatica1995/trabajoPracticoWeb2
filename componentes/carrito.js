@@ -46,8 +46,10 @@ export class CarritoCompra extends LitElement {
   toggleCarrito() {
     this.visible = !this.visible;
     const main = document.getElementById("main");
+    const carro = document.getElementById("carrito");
     if (this.visible) {
       main.classList.add("blur-xs");
+      carro.classList.remove("blur-xs");
     } else {
       main.classList.remove("blur-xs");
     }
@@ -144,7 +146,9 @@ export class CarritoCompra extends LitElement {
           block: !this.visible,
         })}
       >
-        🛒 Carrito (${this.calcularCantidad()})
+      🛒
+      <span class="hidden md:inline"> Carrito</span>    
+         (${this.calcularCantidad()})
       </button>
 
       <aside

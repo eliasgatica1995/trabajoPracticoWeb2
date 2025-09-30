@@ -17,16 +17,18 @@
 
   <body class="bg-white min-h-screen py-8">
    
-    <div id="main">
+    
       <!-- component -->
       <!-- This is an example component -->
       <div class="max-w-2xl mx-auto"> 
-        <nav class="border-gray-200 fixed top-0 left-0 right-0 z-50 bg-white ">
+        <nav class="border-gray-200 fixed top-0 left-0 right-0 z-50 bg-white m-2">
           <div class="container mx-auto flex flex-wrap items-center justify-between">
             <a href="#" class="flex">
               <img src="./images/marketLogo.svg" class="h-10 mr-3" alt="Logo">
-              <span class="self-center text-lg font-semibold whitespace-nowrap">SuperMarket</span>
+              <span class="self-center text-lg font-semibold whitespace-nowrap ">SuperMarket</span>
             </a>
+             <carrito-compra  class="block md:hidden" id="carrito"> </carrito-compra>
+
             <button data-collapse-toggle="mobile-menu" type="button" class="md:hidden ml-3 text-gray-400 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-lg inline-flex items-center justify-center" aria-controls="mobile-menu-2" aria-expanded="false">
               <span class="sr-only">Open main menu</span>
               <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
@@ -52,8 +54,8 @@
                   <!--
                   <img src="/images/cartLogo.svg" class="h-10 mr-3" alt="Logo">
                   -->
-                   <carrito-compra id="carrito"> </carrito-compra>
-   
+                   <carrito-compra class="hidden md:inline" id="carrito"> </carrito-compra>
+
                 </li>   
               </ul>
             </div>
@@ -61,15 +63,15 @@
       </div>
 
       
+      <div id="main">
+        <div class="max-w-11/12 mx-auto">
+          <h1 class="text-3xl font-bold text-center mb-8 text-gray-800 my-2 py-2">
+            Productos del Supermercado
+          </h1>
+          <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
+          <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
 
-      <div class="max-w-11/12 mx-auto">
-        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">
-          Productos del Supermercado
-        </h1>
-        <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
-        <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
-
-        <div id="productosCat"></div>
+          <div id="productosCat"></div>
       </div>
       
     </div>
