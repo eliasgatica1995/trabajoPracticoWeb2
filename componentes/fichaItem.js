@@ -1,5 +1,8 @@
 import { LitElement, html, css } from "lit";
 import { state } from "lit/decorators.js";
+import "./carrito";
+
+
 export class ProductoFicha extends LitElement {
   // se muestra como bloque.
   static styles = css`
@@ -24,7 +27,12 @@ export class ProductoFicha extends LitElement {
     precio: { type: Number, state: true },
     categoria: { type: Object, state: true },
     tags: { type: Array, state: true },
-
+    //picture de categoria
+    picture: {type: String},
+    //title de categoria
+    categoryTitle: {type : String},
+    //descripcion de categoria
+    categoryDesc : {type: String},
     //carrito
     error: { type: String },
   };
@@ -35,6 +43,10 @@ export class ProductoFicha extends LitElement {
     this.imagen = "";
     this.descripcion = "Descripción del producto";
     this.precio = 0;
+    //atributos de categoria
+    this.picture= "";
+    this.categoryTitle="";
+    this.categoryDesc="";
   }
 
   createRenderRoot() {
@@ -62,7 +74,10 @@ export class ProductoFicha extends LitElement {
           this.precio = item.price;
           this.tags = item.tags;
           this.categoria = item.category;
-
+          this.picture = item.category.picture;
+          this.categoryTitle= item.category.title;
+          this.categoryDesc= item.category.description;
+          console.log(this.categoryTitle);
           // actualización del componente
           this.requestUpdate();
         })
@@ -115,15 +130,15 @@ export class ProductoFicha extends LitElement {
       >
         <div class="relative">
           <img
-            src="${this.apiUrl + this.categoria.picture}"
-            alt="${this.categoria.title}"
+            src="${this.apiUrl + this.picture}"
+            alt="${this.categoryTitle}"
             class="w-full h-32 object-cover opacity-80"
           />
-          <div
+          <div  
             class="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center"
           >
             <h3 class="text-white text-lg font-semibold">
-              ${this.categoria.description}
+              ${this.categoryDesc}
             </h3>
           </div>
         </div>
@@ -154,7 +169,7 @@ export class ProductoFicha extends LitElement {
 
             <div class="mt-6 flex items-center gap-3">
               <span class="text-sm text-gray-600">Categoría:</span>
-              <span class="text-sm font-medium">${this.categoria.title}</span>
+              <span class="text-sm font-medium">${this.categoryTitle}</span>
             </div>
 
             <!-- Contenido Tags Ficha -->
