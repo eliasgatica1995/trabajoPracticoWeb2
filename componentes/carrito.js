@@ -139,7 +139,7 @@ export class CarritoCompra extends LitElement {
       <button
         @click=${this.toggleCarrito}
         class=${classMap({
-          "fixed bottom-4 right-4 bg-amber-500 z-40 hover:bg-amber-600 text-black px-6 py-2 rounded font-medium": true,
+          " bg-amber-500 z-40 hover:bg-amber-600 text-black px-6 py-2 rounded font-medium": true,
           hidden: this.visible,
           block: !this.visible,
         })}
