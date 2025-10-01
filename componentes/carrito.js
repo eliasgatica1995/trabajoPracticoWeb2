@@ -72,7 +72,7 @@ export class CarritoCompra extends LitElement {
     if (productoExistente !== -1) {
       this.items[productoExistente].cantidad++;
     } else {
-      producto.picture = "http://161.35.104.211:8000" + producto.picture;
+      producto.picture = this.apiUrl + producto.picture;
       const nuevoItem = {
         ...producto,
         cantidad: 1,

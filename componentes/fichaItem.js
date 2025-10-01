@@ -195,28 +195,11 @@ export class ProductoFicha extends LitElement {
                 `
               : ""}
 
-            <!-- Boton carrito y contador con +-  -->
-            <div class="mt-6 flex items-center gap-3">
-              <div class="flex items-center border rounded">
-                <button
-                  @click=${() => carrito.restarCarrito(this.getProductoId())}
-                  class="px-3 text-xl text-gray-600 hover:text-black"
-                >
-                  −
-                </button>
-                <div class="px-4 font-medium">
-                  ${carrito.getProductoCantidad(this.getProductoId())}
-                </div>
-                <button
-                  @click=${() =>
-                    carrito.agregarAlCarrito(this.getProductoData())}
-                  class="px-3 text-xl text-gray-600 hover:text-black"
-                >
-                  +
-                </button>
-              </div>
+            <!-- Boton carrito -->
+            <div class="mt-6 flex justify-center">
+
               <button
-                class="ml-auto bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-medium"
+                class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded font-medium"
                 @click=${() => carrito.agregarAlCarrito(this.getProductoData())}
               >
                 Añadir al carrito

@@ -11,22 +11,17 @@
     ></script>
     <script src="./componentes/listarProductos.js"></script>
     <script src="./componentes/listarCategorias.js"></script>
-    <!--<script src="./componentes/pruebaParamURL.js"></script>
--->
   </head>
 
   <body class="bg-white min-h-screen py-8">
-    <carrito-compra id="carrito" api-url="http://161.35.104.211:8000"> </carrito-compra>
-      <!-- component -->
-      <!-- This is an example component -->
       <div class="max-w-2xl mx-auto"> 
-        <nav class="border-gray-200 fixed top-0 left-0 right-0 z-50 bg-white m-2">
+        <nav class="border-gray-200 fixed top-0 left-0 right-0 z-50 bg-white mx-2 p-2">
           <div class="container mx-auto flex flex-wrap items-center justify-between">
             <a href="#" class="flex">
               <img src="./images/marketLogo.svg" class="h-10 mr-3" alt="Logo">
-              <span class="self-center text-lg font-semibold whitespace-nowrap ">SuperMarket</span>
+              <span class="self-center text-lg font-semibold whitespace-nowrap hidden md:inline">SuperMarket</span>
             </a>
-             <carrito-compra  class="block md:hidden" id="carrito"> </carrito-compra>
+             <carrito-compra  class="block md:hidden" id="carrito" api-url="http://161.35.104.211:8000"> </carrito-compra>
 
             <button data-collapse-toggle="mobile-menu" type="button" class="md:hidden ml-3 text-gray-400 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-lg inline-flex items-center justify-center" aria-controls="mobile-menu-2" aria-expanded="false">
               <span class="sr-only">Open main menu</span>
@@ -50,10 +45,7 @@
                   </div>
                 </li>
                 <li>
-                  <!--
-                  <img src="/images/cartLogo.svg" class="h-10 mr-3" alt="Logo">
-                  -->
-                   <carrito-compra class="hidden md:inline" id="carrito"> </carrito-compra>
+                   <carrito-compra class="hidden md:inline" id="carrito" api-url="http://161.35.104.211:8000"> </carrito-compra>
 
                 </li>   
               </ul>
@@ -67,10 +59,8 @@
           <h1 class="text-3xl font-bold text-center mb-8 text-gray-800 my-2 py-2">
             Productos del Supermercado
           </h1>
-          <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
-          <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
-
-          <div id="productosCat"></div>
+      
+        <div id="productosCat"></div>
       </div>
       
     </div>
@@ -85,7 +75,7 @@
     </script>
     <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
 
-    <!-- Importamos el web component -->
+    <!-- Imports -->
     <script src="/componentes/ProductosList.js" type="module"></script>
     <script src="/componentes/carrito.js" type="module"></script>
     <script>

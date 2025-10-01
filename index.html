@@ -11,27 +11,23 @@
     ></script>
     <script src="./componentes/listarCategorias.js"></script>
     <script src="./componentes/loadHome.js"></script>
-    <!--<script src="./componentes/pruebaParamURL.js"></script>
--->
   </head>
 
   <body class="bg-white min-h-screen py-8">
-    <carrito-compra id="carrito" api-url="http://161.35.104.211:8000">
-    </carrito-compra>
-      <!-- component -->
-      <!-- This is an example component -->
+
+    
       <div class="max-w-2xl mx-auto">
-        <nav class="border-gray-200 fixed top-0 left-0 right-0 z-50 bg-white">
+        <nav class="border-gray-200 fixed top-0 left-0 right-0 z-50 bg-white mx-2 p-2">
           <div
             class="container mx-auto flex flex-wrap items-center justify-between"
           >
             <a href="#" class="flex">
               <img src="./images/marketLogo.svg" class="h-10 mr-3" alt="Logo" />
-              <span class="self-center text-lg font-semibold whitespace-nowrap"
+              <span class="self-center text-lg font-semibold whitespace-nowrap hidden md:inline"
                 >SuperMarket</span
               >
             </a>
-             <carrito-compra  class="block md:hidden" id="carrito"> </carrito-compra>
+             <carrito-compra  class="block md:hidden" id="carrito" api-url="http://161.35.104.211:8000"> </carrito-compra>
 
             <button
               data-collapse-toggle="mobile-menu"
@@ -118,14 +114,7 @@
                   </div>
                 </li>
                 <li>
-                 <!-- <img
-                    src="/images/cartLogo.svg"
-                    class="h-10 mr-3"
-                    alt="Logo"
-                  />
-                  -->
-                    <carrito-compra class="hidden md:inline" id="carrito"> </carrito-compra>
-
+                  <carrito-compra class="hidden md:inline" id="carrito" api-url="http://161.35.104.211:8000"> </carrito-compra>
                 </li>
               </ul>
             </div>
@@ -134,18 +123,18 @@
       </div>
     <div id="main">
       <div class="max-w-11/12 mx-auto">
-        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800">
+        <h1 class="text-3xl font-bold text-center mb-8 text-gray-800  my-2 py-2">
           Productos del Supermercado
         </h1>
       </div>
 
       <div
-        class="flex items-center gap-4 flex-wrap justify-center"
+        class="flex items-center gap-4 flex-wrap justify-center my-2"
         id="botonesTags"
       ></div>
       <div
         id="productosHome"
-        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8 gap-6"
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-8 gap-6 mx-3"
       ></div>
     </div>
 
@@ -158,7 +147,7 @@
       });
     </script>
 
-    <!-- Importamos el web component -->
+    <!-- Imports -->
     <script src="/componentes/carrito.js" type="module"></script>
     <script src="/componentes/ProductosList.js" type="module"></script>
     <script src="https://unpkg.com/@themesberg/flowbite@1.1.1/dist/flowbite.bundle.js"></script>
